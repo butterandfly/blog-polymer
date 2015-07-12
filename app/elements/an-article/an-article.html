@@ -18,15 +18,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <style>
     :host {
       display: block;
+      padding: 0 12px;
+
+      color: var(--primary-text-color);
+      @apply(--paper-font-body1);
     }
+
+    :host /deep/ a {
+      word-break: break-all;
+    }
+
+    :host /deep/ h1 {
+      @apply(--paper-font-headline);
+      /*color: #ef5350;*/
+    }
+
+    :host /deep/ h2 {
+      /*font-size: 30px;*/
+      /*margin-top: 15px;*/
+      /*margin-bottom: 0;*/
+      @apply(--paper-font-title);
+    }
+
+    :host /deep/ h3 {
+      /*font-size: 20px;*/
+      /*margin-top: 15px;*/
+      /*margin-bottom: 0;*/
+      @apply(--paper-font-subhead);
+    }
+
+    /*h1, h2, h3 {*/
+      /*margin: 15px 0 0;*/
+    /*}*/
   </style>
   <template>
     <iron-ajax auto url="{{getJsonUrl(urlTitle)}}" last-response="{{article}}" on-request="onRequest" on-response="onResponse"></iron-ajax>
     <loading-overlay id="loadingOverlay"></loading-overlay>
     <h1>{{article.title}}</h1>
-    <marked-element markdown="{{article.content}}"></marked-element>
+    <marked-element markdown="{{article.content}}" on-syntax-highlight="highlight"></marked-element>
   </template>
 </dom-module>
+<script src="../../bower_components/highlightjs/highlight.pack.js"></script>
 <script>
 (function() {
   Polymer({
@@ -52,6 +84,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
     onResponse: function() {
       this.$.loadingOverlay.close();
+    },
+
+    highlight: function(ev, detail) {
+      detail.code = hljs.highlightAuto(detail.code).value;
     }
   });
 })();

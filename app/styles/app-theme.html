@@ -51,124 +51,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     --paper-input-container-focus-color: rgba(255, 255, 255, 1);
     --paper-input-container-input-color: #fff;
 
-    --paper-toolbar-background: var(--primary-background-color);
+    /*--paper-toolbar-background: var(--primary-background-color);*/
+
   }
 
   body {
     background-color: var(--primary-background-color);
   }
 
-  paper-material {
-    background-color: var(--primary-background-color);
+  html /deep/ .hide {
+    display: none !important;
   }
 
-  /* General styles */
-
-  /*paper-material {*/
-    /*border-radius: 2px;*/
-    /*height: 100%;*/
-    /*padding: 16px 0 16px 0;*/
-    /*width: calc(98.66% - 16px);*/
-    /*margin: 16px auto;*/
-    /*background: white;*/
-  /*}*/
-
-  /*paper-menu iron-icon {*/
-    /*margin-right: 33px;*/
-    /*opacity: 0.54;*/
-  /*}*/
-
-  article-list paper-menu a {
-    text-decoration: none;
-    color: var(--menu-link-color);
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    font-family: 'Roboto', 'Noto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+  html /deep/ pre {
+    background-color: #fafafa;
+    padding: 16px;
+    margin: 20px 0;
+    overflow-x: auto;
+    white-space: pre;
+    word-wrap: normal;
     font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    min-height: 48px;
-    padding: 0 16px;
   }
 
   /* 我的样式 */
-  paper-toolbar {
-    font-size: 16px;
-    transition: height 0.2s;
-  }
 
-  /* Height of the scroll area */
-  .content {
-    height: 900px;
-  }
-
-  iron-pages {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 
   /* Breakpoints */
 
-  /* Small */
-  @media (max-width: 600px) {
 
-    paper-material {
-      --menu-container-display: none;
-      width: calc(97.33% - 32px);
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    .paper-font-display1 {
-      font-size: 12px;
-    }
-
-    .app-name {
-      font-size: 26px;
-    }
-
-    #drawer .paper-toolbar {
-      margin-left: 16px;
-    }
-
-    #overlay {
-      min-width: 360px;
-    }
-
-    .bg {
-      background: white;
-    }
-
-  }
-
-  /* Tablet+ */
-  @media (min-width: 601px) {
-
-    paper-material {
-      width: calc(98% - 46px);
-      margin-bottom: 32px;
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-
-    #drawer.paper-drawer-panel > [drawer] {
-      border-right: 1px solid rgba(0, 0, 0, 0.14);
-    }
-
-    iron-pages {
-      padding: 25px 25px;
-    }
-
-  }
 
   /* Material Design Adaptive Breakpoints */
   /*

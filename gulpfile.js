@@ -251,6 +251,13 @@ gulp.task('build-data', function() {
 
 });
 
+gulp.task('build-github-project', function() {
+  // TODO: 删除文件夹内容
+  del.sync(['~/butterandfly.github.io/*', '!~/butterandfly.github.io/.git', '!~/butterandfly.github.io/.nojekyll', '!~/butterandfly.github.io/.gitignore']);
+
+  // TODO: 复制dist内容
+})
+
 // Watch Files For Changes & Reload
 gulp.task('serve', ['styles', 'elements', 'images', 'build-data'], function () {
   browserSync({

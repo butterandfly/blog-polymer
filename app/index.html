@@ -44,6 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="bower_components/highlightjs/styles/tomorrow.css">
   <!-- endbuild-->
 
   <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
@@ -57,49 +58,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <body unresolved class="fullbleed layout vertical">
   <span id="browser-sync-binding"></span>
-  <template is="dom-bind" id="app">
-    <paper-header-panel>
-      <paper-toolbar>
-        <paper-icon-button icon="arrow-back"></paper-icon-button>
-        <span>Butter and Fly</span>
-        <span class="flex"></span>
-        <paper-icon-button icon="menu"></paper-icon-button>
-      </paper-toolbar>
-      <div>
-        <iron-pages attr-for-selected="data-route" selected="{{route}}">
-          <section data-route="home">
-            <paper-material elevation="0">
-              <article-list></article-list>
-            </paper-material>
-          </section>
-
-          <section data-route="article">
-            <paper-material elevation="0">
-              <an-article url-title="{{params.name}}" test="{{params.name}}"></an-article>
-            </paper-material>
-          </section>
-        </iron-pages>
-      </div>
-    </paper-header-panel>
-
-    <!--<paper-toast id="caching-complete"-->
-                 <!--duration="6000"-->
-                 <!--text="Caching complete! This app will work offline.">-->
-    <!--</paper-toast>-->
-
-    <!--<platinum-sw-register auto-register-->
-                          <!--clients-claim-->
-                          <!--skip-waiting-->
-                          <!--on-service-worker-installed="displayInstalledToast">-->
-      <!--<platinum-sw-cache default-cache-strategy="networkFirst"-->
-                         <!--precache-file="precache.json">-->
-      <!--</platinum-sw-cache>-->
-    <!--</platinum-sw-register>-->
-
-  </template>
+  <blog-app id="blog-app"></blog-app>
 
   <!-- build:js scripts/app.js -->
-  <script src="scripts/app.js"></script>
+  <!--<script src="scripts/app.js"></script>-->
   <!-- endbuild-->
 </body>
 
