@@ -89,6 +89,11 @@ gulp.task('copy', function () {
     dot: true
   }).pipe(gulp.dest('dist'));
 
+  // 复制data内容
+  var data = gulp.src([
+    'app/data/**/*'
+  ]).pipe(gulp.dest('dist/data'));
+
   var bower = gulp.src([
     'bower_components/**/*'
   ]).pipe(gulp.dest('dist/bower_components'));
@@ -178,7 +183,7 @@ gulp.task('precache', function (callback) {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // 根据articles目录下的文章生成json
-gulp.task('build-data', function() {
+gulp.task('build-data', function(callback) {
   var dataPath = './app/data';
   // 清理data目录
   del.sync(dataPath);
@@ -241,22 +246,42 @@ gulp.task('build-data', function() {
 
       // 写进文件
       var filePath = path.join(dataPath, articleJsonFileName);
-      fs.writeFile(filePath, JSON.stringify(article), null);
+      fs.writeFileSync(filePath, JSON.stringify(article));
     })
 
     var articleListPath = path.join(dataPath, 'articleList.json');
-    fs.writeFile(articleListPath, JSON.stringify(articleList), null);
+    fs.writeFileSync(articleListPath, JSON.stringify(articleList));
 
+    callback();
   });
 
 });
 
-gulp.task('build-github-project', function() {
-  // TODO: 删除文件夹内容
-  del.sync(['~/butterandfly.github.io/*', '!~/butterandfly.github.io/.git', '!~/butterandfly.github.io/.nojekyll', '!~/butterandfly.github.io/.gitignore']);
+var blogPath = '/Users/zero/butterandfly.github.io';
 
-  // TODO: 复制dist内容
-})
+gulp.task('build-github-project', function() {
+
+  del.sync(['/Users/zero/butterandfly.github.io/*',
+    '!/Users/zero/butterandfly.github.io/.git',
+    '!/Users/zero/butterandfly.github.io/.nojekyll',
+    '!/Users/zero/butterandfly.github.io/.gitignore'], {force: true});
+
+  gulp.src(['dist/**/*']).
+    pipe(gulp.dest(blogPath));
+});
+
+// 更新data的内容
+// 测试
+gulp.task('update-articles', ['build-data'], function() {
+  var blogDataPath = path.join(blogPath, 'data');
+
+  // 清除data内容
+  del.sync([path.join(blogDataPath, '*')], {force: true});
+
+  // 复制
+  gulp.src(['./app/data/*']).
+    pipe(gulp.dest(blogDataPath));
+});
 
 // Watch Files For Changes & Reload
 gulp.task('serve', ['styles', 'elements', 'images', 'build-data'], function () {
@@ -310,8 +335,10 @@ gulp.task('serve:dist', ['default'], function () {
 });
 
 // Build Production Files, the Default Task
+// 先生成data
 gulp.task('default', ['clean'], function (cb) {
   runSequence(
+    ['build-data'],
     ['copy', 'styles'],
     'elements',
     ['jshint', 'images', 'fonts', 'html'],

@@ -3,14 +3,12 @@ layout: article
 title: Async（nodejs）实战
 ---
 
-```
-原文：http://www.sebastianseilund.com/nodejs-async-in-practice
-```
+>原文：http://www.sebastianseilund.com/nodejs-async-in-practice
 
 
 在开始使用node.js和async的时候我找不到好的资源讲解怎么使用async包。而这就是我写这文章的原因。
 
-### 什么是异步解决？一种反模式
+## 什么是异步解决？一种反模式
 Async和其他类似的node.js流程控制模块寻找一种简化以下代码的方法：
 
 ```
@@ -61,7 +59,7 @@ app.get('/user/:userId', function(req, res, next) {
 
 这就是async出现的原因——为了使这种代码变得更加简单和清晰。这文章里我会告诉你怎么在实战中使用async。
 
-### 重点：callbacks和errors
+## 重点：callbacks和errors
 
 在我刚开始使用async的时候，我没很好理解callbacks的使用方式。
 
@@ -122,7 +120,7 @@ async.parallel([
 if (err) return callback(err);
 ```
 
-### 这文章会用到那些模块
+## 这文章会用到那些模块
 下面的例子中我会用到以下的node模块：
 
 * `async`（废话）。在你的代码中应该通过`var async = require('async');` 引入。
@@ -132,7 +130,7 @@ if (err) return callback(err);
 
 现在我们开始这些有趣的内容吧！
 
-### 我需要运行多个独立的任务，当全部都完成后需要做某些事情。
+## 我需要运行多个独立的任务，当全部都完成后需要做某些事情。
 你应该使用[async.parallel](https://github.com/caolan/async#parallel)。
 
 这例子会读取论坛用户的详细信息和他发表的文章列表。
@@ -174,7 +172,7 @@ app.get('/user/:userId', function(req, res, next) {
 
 如果你有更多的任务需要运行，只需要添加到任务数组中。
 
-### 我需要运行一些有依赖关系的任务，任务都结束后执行其他事情
+## 我需要运行一些有依赖关系的任务，任务都结束后执行其他事情
 那你需要用[async.series](https://github.com/caolan/async#series)。
 
 我们再次用回刚才论坛用户的例子。
@@ -252,7 +250,7 @@ app.get('/user/:userId', function(req, res, next) {
 
 在我看来，在只有两层的时候两种方案都可以使用。如果更多的话，则一定要用async.series。
 
-### 我需要遍历一个集合，对每一个元素执行一个异步任务；所有任务完成后执行某些东西。
+## 我需要遍历一个集合，对每一个元素执行一个异步任务；所有任务完成后执行某些东西。
 
 你需要使用[async.forEach](https://github.com/caolan/async#forEach)。
 
@@ -290,7 +288,7 @@ app.get('/user/:userId', function(req, res, next) {
     });
 ```
 
-### 我需要遍历一个集合，对每个元素执行异步任务，但同一时间里只允许执行x个，然后全部完成后执行其他东西
+## 我需要遍历一个集合，对每个元素执行异步任务，但同一时间里只允许执行x个，然后全部完成后执行其他东西
 
 但如果你的数据库同时只允许有限的连接，而你的用户在一个请求里要删除上千个消息？这里你需要async.forEach的姐妹方法[async.forEachLimit](https://github.com/caolan/async#forEachLimit)。
 
@@ -313,13 +311,13 @@ async.forEachLimit需要3个参数：集合，并发数，遍历方法。并发�
 
 如果你要处理很大的集合，使用forEachLimit是节流的一个很好的办法。
 
-### 我需要遍历一个集合，对每个元素执行异步任务，但同一时间里只执行一个，全部完成后执行其他东西
+## 我需要遍历一个集合，对每个元素执行异步任务，但同一时间里只执行一个，全部完成后执行其他东西
 
 async.forEach姐妹们中还有一个[async.forEachSeries](https://github.com/caolan/async#forEachSeries)，她其实就是并发数为1的async.forEachLimit。
 
 在任务需要线性地执行时你会用到这方法。我暂时想不到用到这方法的实际情景，除了为i/o资源节流。
 
-### 我需要执行一个任意集合的异步任务
+## 我需要执行一个任意集合的异步任务
 
 你需要用[async.queue](https://github.com/caolan/async#queue)。
 
@@ -430,7 +428,7 @@ async.queue返回一个对象，通过方法`queue.push(task)`你可以对queue�
 
 哪天我有空了会看看是否能协助向async添加这么一个支持。
 
-### 组合：我需要执行一些并联任务、串联任务和遍历一个集合并对每个元素执行异步任务。
+## 组合：我需要执行一些并联任务、串联任务和遍历一个集合并对每个元素执行异步任务。
 
 你会用到[async.parallel](https://github.com/caolan/async#parallel)，[async.series](https://github.com/caolan/async#series)，和[async.forEach](https://github.com/caolan/async#forEach)的组合。
 
@@ -591,4 +589,4 @@ async.queue返回一个对象，通过方法`queue.push(task)`你可以对queue�
 
 如果你有什么留言或建议，我很乐意知道。
 
-（完，原文：http://www.sebastianseilund.com/nodejs-async-in-practice）
+（完）

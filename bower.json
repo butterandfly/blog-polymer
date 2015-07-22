@@ -8,7 +8,9 @@
     "neon-elements": "PolymerElements/neon-elements#1.0.0",
     "page": "visionmedia/page.js#~1.6.3",
     "marked-element": "PolymerElements/marked-element#~1.0.2",
-    "highlightjs": "~8.5.0"
+    "highlightjs": "~8.5.0",
+    "github-markdown-css": "~2.0.9",
+    "font-roboto-local": "https://github.com/PolymerElements/font-roboto-local.git#~1.0.0"
   },
   "devDependencies": {
     "web-component-tester": "*",

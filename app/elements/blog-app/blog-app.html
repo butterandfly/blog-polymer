@@ -9,26 +9,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html"/>
-<link rel="import" href="../../../bower_components/neon-animation/neon-animation.html"/>
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../article-list/article-list.html">
+<link rel="import" href="../an-article/an-article.html">
+<link rel="import" href="../loading-overlay/loading-overlay.html">
+
+<!--<link rel="import" href="../../../bower_components/neon-animation/neon-animation.html"/>-->
 
 <dom-module id="blog-app">
   <style>
     :host {
       height: 100%;
       @apply(--layout-vertical);
-
-      --paper-toolbar-background: var(--dark-primary-color);
-      --paper-toolbar-color: var(--light-primary-color);
     }
 
     iron-pages {
-      max-width: 1000px;
+      max-width: 1280px;
       margin: 0 auto;
+      padding-bottom: 20px;
     }
 
     #blog-title, #back-btn {
-      color: var(--light-primary-color);
+      color: var(--paper-toolbar-color);
       text-decoration: none;
     }
 
@@ -47,10 +55,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     /* Tablet+ */
     @media (min-width: 601px) {
-
-      /*iron-pages {*/
-        /*padding: 25px 25px;*/
-      /*}*/
 
     }
   </style>
@@ -72,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <section data-route="article">
             <paper-material elevation="0">
-              <an-article url-title="{{params.name}}" test="{{params.name}}"></an-article>
+              <an-article class="markdown-body" url-title="{{params.name}}" test="{{params.name}}"></an-article>
             </paper-material>
           </section>
         </iron-pages>
@@ -105,7 +109,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     ready: function() {
 //      this.hideBackBtn();
-    },
+    }
 
 //    behaviors: [
 //      Polymer.NeonAnimationRunnerBehavior

@@ -94,9 +94,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!--<a id="article-anchor" data-utl-title="{{getArticleUrl(item.urlTitle)}}">-->
               <span class="title" flex>{{item.title}}</span>
               <span class="create-date">{{item.createDate}}</span>
-            <!--</a>-->
+            </a>
           </paper-item>
-      </a>
+      <!--</a>-->
         </template>
       <!--</paper-menu>-->
     </div>
@@ -116,8 +116,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         notify: true
       }
     },
-    selectArticle: function(e) {
-      var url = this.$['paper-menu'].focusedItem;
+    selectArticle: function() {
+//      var url = this.$['paper-menu'].focusedItem;
       return;
 
 //      var url = '/article/' + e.currentTarget.getAttribute('url-title');
