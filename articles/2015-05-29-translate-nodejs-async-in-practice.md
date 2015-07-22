@@ -1,10 +1,6 @@
----
-layout: article
-title: Async（nodejs）实战
----
+# Async（nodejs）实战
 
 >原文：http://www.sebastianseilund.com/nodejs-async-in-practice
-
 
 在开始使用node.js和async的时候我找不到好的资源讲解怎么使用async包。而这就是我写这文章的原因。
 

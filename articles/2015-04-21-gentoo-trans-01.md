@@ -1,7 +1,4 @@
----
-layout: article
-title: USE标记（翻译）
----
+# USE标记（翻译）
 
 ```
 原文：https://wiki.gentoo.org/wiki/Handbook:X86/Working/USE

@@ -1,7 +1,4 @@
----
-layout: article
-title: 理解进程替换（Process Substitution）
----
+# 理解进程替换（Process Substitution）
 
 ## 从read说起
 在学习read命令的时候，我们总会遇到这么一总情形：

@@ -1,6 +1,4 @@
----
-title: Polymer1.0制作博客（2）：article-list
----
+# Polymer1.0制作博客（2）：article-list
 
 >这一章我们会制作该项目里的第一个自定义元素`<article-list>`，该元素呈现一个文章列表。不过，我们先讨论一下项目的目录结构。
 

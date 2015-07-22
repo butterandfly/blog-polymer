@@ -1,7 +1,4 @@
----
-layout: article
-title: 编写命令创建github博客文章
----
+# 编写命令创建github博客文章
 
 ## 起因
 

@@ -20,6 +20,7 @@ var merge = require('merge-stream');
 var path = require('path');
 var fs = require('fs');
 var glob = require('glob');
+var articleDataHelper = require('./articleDataHelper.js');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -191,69 +192,14 @@ gulp.task('build-data', function(callback) {
   // 创建目录
   fs.mkdirSync(dataPath);
 
-  // 遍历所有文章, 生成json及列表json
-  // article json: title, create date, content,
-  glob('articles/*.md', function(er, files) {
-    if (er) {
-      console.log('create data error: ' + er);
-      return;
-    }
+  var mdPath = 'articles/*.md';
+  articleDataHelper.getArticleData(mdPath, function(articles) {
 
-    var articleList = [];
-
-    files.forEach(function(item) {
-      var fileName = path.basename(item, '.md');
-      var createDate = fileName.substr(0, 10);
-
-      // 提取meta内容
-      var fileContent = fs.readFileSync(item, {encoding: 'utf8'});
-      var re = /---[\s\S]*---/mg;
-      var meta = fileContent.match(re)[0];
-
-      // 提取content
-      var content = (fileContent.split(meta)[1]).trim();
-
-      // 解释meta
-      var metaObj = {};
-      var lines = meta.split('\n');
-      var i;
-      for (i = 1; i < lines.length -1; i++) {
-        var line = lines[i];
-        var words = line.split(':');
-        var key = words[0].trim();
-        var val = words[1] ? words[1].trim() : '';
-        metaObj[key] = val;
-      }
-
-
-      var articleJsonFileName = fileName + '.json';
-      // 构建article
-      var article = {
-        title: metaObj.title,
-        createDate: createDate,
-        url: path.join('data/', articleJsonFileName),
-        content: content
-      };
-
-
-      // 数组前插入
-      articleList.splice(0, 0, {
-        title: article.title,
-        createDate: createDate,
-        urlTitle: fileName,
-        url: article.url
-      })
-
-      // 写进文件
-      var filePath = path.join(dataPath, articleJsonFileName);
-      fs.writeFileSync(filePath, JSON.stringify(article));
-    })
-
-    var articleListPath = path.join(dataPath, 'articleList.json');
-    fs.writeFileSync(articleListPath, JSON.stringify(articleList));
-
+    articleDataHelper.createAllArticlesJson(articles, dataPath);
+    articleDataHelper.createArticleListJson(articles, dataPath);
     callback();
-  });
+  })
+
 
 });
 

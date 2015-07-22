@@ -28,7 +28,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <iron-ajax auto url="{{getJsonUrl(urlTitle)}}" last-response="{{article}}" on-request="onRequest" on-response="onResponse"></iron-ajax>
     <loading-overlay id="loadingOverlay"></loading-overlay>
-    <h1>{{article.title}}</h1>
     <marked-element markdown="{{article.content}}" on-syntax-highlight="highlight"></marked-element>
   </template>
 </dom-module>

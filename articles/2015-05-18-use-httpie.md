@@ -1,7 +1,4 @@
----
-layout: article
-title: 使用httpie代替curl和wget
----
+# 使用httpie代替curl和wget
 
 ## 什么是httpie
 github: https://github.com/jakubroztocil/httpie
