@@ -1,8 +1,6 @@
 # USE标记（翻译）
 
-```
-原文：https://wiki.gentoo.org/wiki/Handbook:X86/Working/USE
-```
+>原文：https://wiki.gentoo.org/wiki/Handbook:X86/Working/USE
 
 ## 什么是USE标记
 
