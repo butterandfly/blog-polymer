@@ -13,6 +13,11 @@ body {
   color: #333;
 }
 
+#oops {
+  text-align: center;
+  margin-top: 40px;
+}
+
 .hide {
   display: none !important;
 }

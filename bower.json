@@ -10,7 +10,8 @@
     "marked-element": "PolymerElements/marked-element#~1.0.2",
     "highlightjs": "~8.5.0",
     "github-markdown-css": "~2.0.9",
-    "font-roboto-local": "https://github.com/PolymerElements/font-roboto-local.git#~1.0.0"
+    "font-roboto-local": "https://github.com/PolymerElements/font-roboto-local.git#~1.0.0",
+    "bowser": "~0.7.3"
   },
   "devDependencies": {
     "web-component-tester": "*",

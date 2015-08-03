@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Polymer Starter Kit" />
-  <title>Polymer Starter Kit</title>
+  <title>Butter and Fly</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- Chrome for Android theme color -->
@@ -59,10 +59,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <body unresolved class="fullbleed layout vertical">
   <span id="browser-sync-binding"></span>
+
+  <div class="hide" id="oops">
+    <img src="images/oops.jpg" alt="Oops"/>
+    <h1>Damn！你的浏览器太旧了。</h1>
+    <p>请使用较新的Chrome、Safari、Firefox等现代浏览器。</p>
+  </div>
   <blog-app id="blog-app"></blog-app>
 
   <!-- build:js scripts/app.js -->
   <script src="../bower_components/highlightjs/highlight.pack.js"></script>
+  <script src="../bower_components/bowser/bowser.min.js"></script>
+  <script src="scripts/oops.js"></script>
   <!-- endbuild-->
 </body>
 
